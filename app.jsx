@@ -34,4 +34,12 @@ function Application(props) {
     )
 }
 
-ReactDOM.render(<Application title="My Scoreboard" />, document.getElementById('container'));
+Application.probTypes = {
+    title: React.PropTypes.string,
+}
+
+Application.defaultProps = {
+    title: "Scoreboard",
+}
+
+ReactDOM.render(<Application />, document.getElementById('container'));
