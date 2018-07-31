@@ -41,7 +41,7 @@ function Player(props) {
                 {props.name}
             </div>
             <div className="player-score">
-                <Counter score={props.score} />
+                <Counter score={props.score} onChange={props.onScoreChange} />
             </div>
         </div>
     );
@@ -50,6 +50,7 @@ function Player(props) {
 Player.propTypes = {
     name: React.PropTypes.string.isRequired,
     score: React.PropTypes.number,
+    onScoreChange: React.PropTypes.func.isRequired,
 }
 
 Player.defaultProps = {
@@ -61,15 +62,16 @@ Player.defaultProps = {
 const Counter = (props) => {
     return (
         <div className="counter" >
-            <button className="counter-action decrement"> - </button>
+            <button className="counter-action decrement" onClick={() => { props.onChange(-1); }}> - </button>
             <div className="counter-score"> {props.score} </div>
-            <button className="counter-action increment"> + </button>
+            <button className="counter-action increment" onClick={() => { props.onChange(1); }}> + </button>
         </div >
     );
 }
 
 Counter.propTypes = {
     score: React.PropTypes.number.isRequired,
+    onChange: React.PropTypes.func.isRequired,
 }
 
 class Application extends React.Component {
@@ -81,14 +83,26 @@ class Application extends React.Component {
         }
     }
 
+    onScoreChange(index, delta) {
+        console.log(`${index}:  ${delta}`);
+        this.state.players[index].score += delta;
+        this.setState(this.state);
+    }
+
     render() {
         return (
             <div className="scoreboard">
                 <Header title={this.props.title} />
                 <div className="players">
-                    {this.state.players.map((player) => {
-                        return (<Player name={player.name} score={player.score} key={player.id} />);
-                    })}
+                    {this.state.players.map(function (player, index) {
+                        return (
+                            <Player
+                                onScoreChange={delta => { this.onScoreChange(index, delta) }}
+                                name={player.name}
+                                score={player.score}
+                                key={player.id} />
+                        );
+                    }.bind(this))}
                 </div>
             </div>
         )
