@@ -1,6 +1,6 @@
 # React Scoreboard
 A simple Scoreboard application made with [React JS](https://reactjs.org/) using [JSX](https://reactjs.org/docs/introducing-jsx.html). <br />
-Based on the [Treehouse course React Basiscs](https://teamtreehouse.com/library/review-and-next-steps) using some new [ES6 features](http://es6-features.org/). 
+Based on the [Treehouse course React Basiscs](https://teamtreehouse.com/library/react-basics) using some new [ES6 features](http://es6-features.org/). 
 <br />
 Using [Babel](https://babeljs.io/) compiler for cross-browser compatibility. 
 
