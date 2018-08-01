@@ -5,6 +5,10 @@ body {
   text-transform: uppercase;
 }
 
+td {
+  color: black;
+}
+
 .scoreboard {
   background: #333;
   width: 700px;
@@ -19,7 +23,7 @@ body {
   text-align: center;
   display: flex;
   align-items: center;
-  background-color: #222;
+  background-color: #fff;
   border-radius: 15px 15px 0 0;
   border-bottom: solid 2px #444;
 }
@@ -29,6 +33,7 @@ body {
   font-size: 1.5em;
   letter-spacing: 3px;
   font-weight: normal;
+  color: #00026b;
 }
 
 .header .stats,
