@@ -157,15 +157,42 @@ AddPlayerForm.propTypes = {
 class Stopwatch extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            running: false,
+        }
+        this.onStart = this.onStart.bind(this);
+        this.onStop = this.onStop.bind(this);
+        this.onReset = this.onReset.bind(this);
+    }
+
+    onStart() {
+        this.setState({
+            running: true
+        })
+    }
+
+    onStop() {
+        this.setState({
+            running: false
+        })
+    }
+
+    onReset() {
+
     }
 
     render() {
+
         return (
             <div className="stopwatch">
                 <h2>Stopwatch</h2>
                 <div className="stopwatch-time">0</div>
-                <button>Start</button>
-                <button>Reset</button>
+                {this.state.running ?
+                    <button onClick={this.onStop}>Stop</button>
+                    :
+                    <button onClick={this.onStart}>Start</button>
+                }
+                <button onClick={this.onReset}>Reset</button>
             </div>
         )
     }
