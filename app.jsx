@@ -26,6 +26,7 @@ function Header(props) {
         <div className="header">
             <Stats players={props.players} />
             <h1>{props.title}</h1>
+            <Stopwatch />
         </div>
     );
 }
@@ -153,6 +154,23 @@ AddPlayerForm.propTypes = {
     onAdd: React.PropTypes.func.isRequired,
 }
 
+class Stopwatch extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+
+    render() {
+        return (
+            <div className="stopwatch">
+                <h2>Stopwatch</h2>
+                <div className="stopwatch-time">0</div>
+                <button>Start</button>
+                <button>Reset</button>
+            </div>
+        )
+    }
+}
+
 class Application extends React.Component {
 
     constructor(props) {
@@ -174,7 +192,7 @@ class Application extends React.Component {
         this.state.players.push({
             name: name,
             score: 0,
-            id: (this.state.players.length + 1),
+            id: Math.floor(Date.now() / 100),
         })
         this.setState(this.state);
         console.log(this.state);
